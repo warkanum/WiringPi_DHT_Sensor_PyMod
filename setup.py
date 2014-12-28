@@ -30,6 +30,6 @@ setup (name = 'WiringPi_DHT_Sensor',
        author  = 'Hein Puth',
        author_email = 'hein.puth@gmail.com',
        license   = 'MIT',
-       url  = 'http://www.kinathka.co.za',
+       url  = 'https://github.com/warkanum/WiringPi_DHT_Sensor_PyMod',
        description = 'Python C module to read DHT Sensor with WiringPi',
        ext_modules = [module1])
