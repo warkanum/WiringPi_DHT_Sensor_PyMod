@@ -13,6 +13,9 @@ typedef struct sensor_data {
 	char errmsg[300];
 } sensor_data;
 
+// Setup Wiring PI m
+int setupSensor();
+
 // Read data from sensor on specified pin.
 void read_dht11_data(int pin, sensor_data * return_data);
 

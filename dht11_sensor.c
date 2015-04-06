@@ -8,6 +8,18 @@
 #include <sched.h>
 
 int dht11_dat[5] = { 0, 0, 0, 0, 0 };
+int was_setup = 0;
+
+int setupSensor()
+{
+    if (wiringPiSetup() == -1)
+    {
+            was_setup = 0;
+            return 1;
+    }
+    was_setup = 1;
+    return 0;
+}
 
 void read_dht11_data(int pin, sensor_data * returnData)
 {
@@ -22,7 +34,12 @@ void read_dht11_data(int pin, sensor_data * returnData)
 
 	dht11_dat[0] = dht11_dat[1] = dht11_dat[2] = dht11_dat[3] = dht11_dat[4] = 0;
 
-	if (wiringPiSetup() == -1)
+        if (!was_setup)
+        {
+            setupSensor();
+        }
+
+        if (was_setup)
 	{
 		returnData->valid = 0;
 		strcpy(returnData->errmsg, "Failed to setup Wiring PI\0");
